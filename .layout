@@ -1,0 +1,84 @@
+{
+  "type": "layout",
+  "children": [
+    {
+      "type": "file",
+      "name": "META6.json"
+    },
+    {
+      "name": "Changes",
+      "type": "file"
+    },
+    {
+      "children": [
+        {
+          "name": "index.html",
+          "type": "file"
+        },
+        {
+          "name": "cro-tick-log",
+          "type": "file"
+        },
+        {
+          "name": "node-client",
+          "type": "file"
+        },
+        {
+          "type": "file",
+          "name": "README.md"
+        }
+      ],
+      "type": "directory",
+      "purpose": null,
+      "name": "examples"
+    },
+    {
+      "type": "file",
+      "name": "LICENCE"
+    },
+    {
+      "children": [
+        {
+          "name": "010-basic.t",
+          "type": "file"
+        },
+        {
+          "type": "file",
+          "name": "001-meta.t"
+        }
+      ],
+      "type": "directory",
+      "purpose": null,
+      "name": "t"
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "type": "directory",
+              "children": [
+                {
+                  "name": "EventSource.rakumod",
+                  "type": "file"
+                }
+              ],
+              "purpose": null,
+              "name": "Dispatcher"
+            }
+          ],
+          "purpose": null,
+          "type": "directory",
+          "name": "Lumberjack"
+        }
+      ],
+      "type": "directory",
+      "purpose": null,
+      "name": "lib"
+    },
+    {
+      "type": "file",
+      "name": "README.md"
+    }
+  ]
+}
