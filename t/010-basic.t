@@ -35,6 +35,7 @@ lives-ok {
 }, "reconstruct the message";
 
 is $ljm.message, "Info level message", "got the right message";
+is $ljm.level, Lumberjack::Info, "with the right level";
 
-
+done-testing()
 # vim: ft=raku
