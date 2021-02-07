@@ -1,0 +1,66 @@
+#!/usr/bin/env raku
+
+use Lumberjack;
+use Lumberjack::Dispatcher::EventSource;
+use Cro::HTTP::Router;
+use Cro::HTTP::Server;
+
+my $dispatcher = Lumberjack::Dispatcher::EventSource.new;
+
+Lumberjack.dispatchers.append: $dispatcher;
+
+class Loggy does Lumberjack::Logger {
+}
+
+my $app = route {
+    get -> {
+        static $*PROGRAM.parent.add('index.html').Str;
+    }
+    get -> 'log' {
+        content 'text/event-stream', $dispatcher.Supply;
+    }
+};
+
+my Cro::Service $log = Cro::HTTP::Server.new(:host<0.0.0.0>, :port<7798>, application => $app);
+
+$log.start;
+
+my $loggy = Loggy.new;
+
+my @words = "/usr/share/dict/words".IO.lines;
+
+# To emulate some logging action we'll just log the time every second
+# in reality this could be any Lumberjack::Logger in the same process
+react {
+    whenever Supply.interval(1) {
+        my $len = ( 5 .. 20).pick;
+        my $str = @words.pick($len).join(' ');
+
+        given (^6).pick {
+            when 0 {
+                $loggy.log-trace($str);
+            }
+            when 1 {
+                $loggy.log-debug($str);
+            }
+            when 2 {
+                $loggy.log-info($str);
+            }
+            when 3 {
+                $loggy.log-warn($str);
+            }
+            when 4 {
+                $loggy.log-error($str);
+            }
+            when 5 {
+                $loggy.log-fatal($str);
+            }
+        }
+    }
+    whenever signal(SIGINT) {
+        $log.stop;
+        exit;
+    }
+}
+
+# vim: ft=raku
