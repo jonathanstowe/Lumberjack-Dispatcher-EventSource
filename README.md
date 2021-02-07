@@ -2,6 +2,8 @@
 
 A Dispatcher for Lumberjack that emits the log messages as server sent events
 
+![Build Status](https://github.com/jonathanstowe/Lumberjack-Dispatcher-EventSource/workflows/CI/badge.svg)
+
 ## Synopsis
 
     use Lumberjack;
@@ -32,7 +34,7 @@ There is a slightly more comprehensive example in the [examples](examples) direc
 
 This is a [Lumberjack::Dispatcher](https://github.com/jonathanstowe/Lumberjack/blob/master/Documentation.md#lumberjackdispatcher) implementation that emits the log messages as JSON (as formatted by `Lumberjack::Message::JSON`,) on a supply in the format of [Server Sent Events](https://www.w3.org/TR/eventsource/). The `Supply` can be passed as a response to a web toolkit that supports chunked encoding such as `Cro` or `Crust`.
 
-This may be useful if you want to expose your logging to the web or to some log archover or something.
+This may be useful if you want to expose your logging to the web or to some log archiver or something.
 
 The exact format of the JSON emitted is documented by [Lumberjack::Message::JSON](https://github.com/jonathanstowe/Lumberjack-Message-JSON)
 
