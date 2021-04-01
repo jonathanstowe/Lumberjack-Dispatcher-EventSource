@@ -1,6 +1,6 @@
 {
   "name": "Lumberjack::Dispatcher::EventSource",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "auth": "github:jonathanstowe",
   "api": "1.0",
   "description": "A Lumberjack dispatcher that dispatches to server sent events for a web application",
@@ -16,9 +16,9 @@
    "runtime": {
       "requires": [
            "JSON::Class:ver<0.0.16+>",
-           "Lumberjack::Message::JSON:ver<0.0.2+>",
+           "Lumberjack::Message::JSON:ver<0.0.3+>",
            "EventSource::Server",
-           "Lumberjack:ver<0.1.1+>"
+           "Lumberjack:ver<0.1.2+>"
         ]
      }
   },
